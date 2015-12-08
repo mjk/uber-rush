@@ -1,0 +1,29 @@
+{
+  "name": "uber-rush",
+  "version": "0.0.1",
+  "description": "UberRUSH v3.0 SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjk/uber-rush.git"
+  },
+  "keywords": [
+    "uber"
+  ],
+  "author": "Matthew Keesan <keesan@gmail.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/mjk/uber-rush/issues"
+  },
+  "homepage": "https://github.com/mjk/uber-rush#readme",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "nconf": "^0.8.2",
+    "phone": "^1.0.5",
+    "q": "^1.4.1",
+    "restling": "^0.9.1"
+  }
+}
