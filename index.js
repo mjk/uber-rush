@@ -17,5 +17,6 @@ module.exports = {
     Delivery: require('./lib/Delivery'),
     Location: require('./lib/Location'),
     Quote: require('./lib/Quote'),
+    Item: require('./lib/Item'),
     Contact: require('./lib/Contact')
 };
