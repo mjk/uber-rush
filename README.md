@@ -28,6 +28,7 @@ You must call each status in order.
 
 ## Getting started 
 
+#### Step 1: Intialize the SDK
 Before making API calls, you must initialize the SDK with your app's ID and secret.
 
     var rush = require('uber-rush')
@@ -37,42 +38,86 @@ Before making API calls, you must initialize the SDK with your app's ID and secr
         sandbox: true
     });
 
-Then you can start a new delivery by providing a description of the item to be transported, the pickup and the dropoff addresses.
+#### Step 2: Get a quote
+
+Every delivery starts with a quote. Initialize a new delivery with
+
+* a description of the item to be transported
+* the pickup and the dropoff addresses
+* (optionally) contact information at the pickup and drop off locations
+
+configured in a plain old JavaScript object:
+
 
 	var delivery = new rush.Delivery({
-	    item: {
-	        title: 'Chocolate bar',
-	        quantity: 1,
-	        is_fragile: true
-	    },
-	    pickup: {
-	        contact: {
-	            first_name: 'Ryan',
-	            last_name: 'Cheney
-	        },
-	        location: {
-	            address: '64 Seabring St',
-	            city: 'Brooklyn',
-	            state: 'NY',
-	            postal_code: '11231',
-	            country_code: 'US'
-	        }
-	    },
-	    dropoff: {
-	        contact: {
-	            first_name: 'Karen',
-	            last_name: 'Holmes
-	        },
-	        location: {
-	            address: '80 Willoughby St',
-	            city: 'Brooklyn',
-	            state: 'NY',
-	            postal_code: '11201',
-	            country_code: 'US'
-	        }
-	    }
+	  item: {
+	      title: 'Chocolate bar',
+	      quantity: 1,
+	      is_fragile: true
+	  },
+	  pickup: {
+	      contact: {
+	          first_name: 'Ryan',
+	          last_name: 'Cheney
+	      },
+	      location: {
+	          address: '64 Seabring St',
+	          city: 'Brooklyn',
+	          state: 'NY',
+	          postal_code: '11231',
+	          country_code: 'US'
+	      }
+	  },
+	  dropoff: {
+	      contact: {
+	          first_name: 'Karen',
+	          last_name: 'Holmes
+	      },
+	      location: {
+	          address: '80 Willoughby St',
+	          city: 'Brooklyn',
+	          state: 'NY',
+	          postal_code: '11201',
+	          country_code: 'US'
+	      }
+	  }
+	});
+		
+Sending the quote out for an estimate returns a [promise](https://promisesaplus.com) for an array of `rush.Quote` objects:
+
+	delivery.quote()
+	.then(function(quotes) {
+		console.log('Received ' + quotes.length + ' quotes:');
+		for (var i = 0; i < quotes.length; i++) console.log(quotes[i]);
+	})
+	.fail(function(error){
+		console.log('Delivery quote error:',error);
 	});
 
+#### Step 3: Confirm the quote
+
+The first quote in the array will be the best quote for the job. Confirming the delivery will start a biker on her journey (unless you're in the sandbox) so be sure you're ready! Before you confirm delivery, it's a good idea to subscribe to a few **events** in order to track the courier's progress.
+
+Uber requests that we only check status every 30 seconds. If you're trying to keep up with your courier on a map, that's a slow update cycle—by default we only fire status update events on the same schedule. Set `delivery.extrapolate` to true to fire events at a high degree of fidelity, suitable for live maps. 
+
+We simply linearly extrapolate the courier's latitude and longitude given the current location and bearing, and their average speed. Every 30 seconds, location will be updated to the official Uber data.
+
+	delivery.on('status', function(status) {
+		// fired every time the delivery status changes (see below)
+		console.log('Delivery status: ' + status)
+	});
+	delivery.on('location', function(location) {
+		/* location: {latitude: ..., longitude: ..., bearing: ...} */
+		console.log('Courier location', location); 
+	});
+	delivery.extrapolate = true; 
+	delivery.confirm();
+
+
+## Events
+
+ * **status**: 
+ * **location**:
 
 
 ## Delivery statuses
