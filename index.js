@@ -14,7 +14,7 @@ module.exports = {
         nconf.set('uber_api_client_id', options.client_id);
         nconf.set('uber_api_server_token', options.server_token);
         nconf.set('uber_api_sandbox', sandbox);
-        nconf.set('uber_api_sandbox', sandbox);
+        nconf.set('uber_api_simulate', options.simulate);
 
         return API.getToken();
     },
