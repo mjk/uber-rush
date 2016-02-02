@@ -12,10 +12,9 @@ You'll need a client ID and a client secret from Uber. Additionally, you'll prob
  4. some more steps
  5. `npm install @mjk/uber-rush`
 
+When using the sandbox, updated delivery statuses may either be simulated by you directly, by calling `delivery.updateStatus(<new-delivery-status>);`, or automatically by using the `simulate` truthy configuration parameter. If `simulate` is a number, it will be used as the interval in milliseconds between order status updates.
 
-When using the sandbox, updated delivery statuses must be simulated by you directly, by calling `delivery.updateStatus(<new-delivery-status>);`. 
-
-You must call each status in order.
+You must call each status in proper order.
 
 ## API reference
 
@@ -142,7 +141,7 @@ We simply linearly extrapolate the courier's latitude and longitude given the cu
     rush.init({
         client_secret: YOUR_CLIENT_SECRET,
         client_id: YOUR_CLIENT_ID,
-        sandbox: true
+        simulate: true
     }).then(function() {
         var delivery = new rush.Delivery({
             item: {
