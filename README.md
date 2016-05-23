@@ -25,8 +25,7 @@ Before making API calls, you must initialize the SDK with your app's ID and secr
     const UberRUSHClient = new UberRUSH({
         client_secret: YOUR_CLIENT_SECRET,
         client_id: YOUR_CLIENT_ID,
-        sandbox: true, // No couriers will actually be called if set
-        extrapolate: true // Animate courier path between server updates
+        sandbox: true // No couriers will actually be called if set
     });
 
 #### Step 2: Get a quote
@@ -88,9 +87,7 @@ Sending the quote out for an estimate returns a [promise](https://promisesaplus.
 
 The first quote in the array will be the best quote for the job. Confirming the delivery will start a courier on her journey (unless you're in the sandbox) so be sure you're ready! Before you confirm delivery, it's a good idea to subscribe to a few **events** in order to track the courier's progress.
 
-Uber requests that we only check status every 30 seconds. If you're trying to keep up with your courier on a map, that's a slow update cycle--by default we only fire status update events on the same schedule. Set `delivery.extrapolate` to true to fire events at a high degree of fidelity, suitable for live maps. 
-
-We simply linearly extrapolate the courier's latitude and longitude given the current location and bearing, and their average speed. Every 30 seconds, location will be updated to the official Uber data.
+Uber requests that we only check status every 30 seconds. If you're trying to keep up with your courier on a map, that's a slow update cycle--by default we only fire status update events on the same schedule. 
 
 	delivery.on('status', function(status) {
 		// fired every time the delivery status changes (see below)
@@ -100,7 +97,6 @@ We simply linearly extrapolate the courier's latitude and longitude given the cu
 		/* location: {latitude: ..., longitude: ..., bearing: ...} */
 		console.log('Courier location', location); 
 	});
-	delivery.extrapolate = true; 
 	delivery.confirm();
 
 
@@ -335,48 +331,47 @@ Sample location:
 
     let delivery = UberRUSHClient.createDelivery({
         item: {
-              title: 'Chocolate bar',
-              quantity: 1,
-              is_fragile: true
-          },
-          pickup: {
-              contact: {
-              },
-              location: {
-                  address: '64 Seabring St',
-                  city: 'Brooklyn',
-                  state: 'NY',
-                  postal_code: '11231',
-                  country_code: 'US'
-              }
-          },
-          dropoff: {
-              contact: {
-              },
-              location: {
-                  address: '80 Willoughby St',
-                  city: 'Brooklyn',
-                  state: 'NY',
-                  postal_code: '11201',
-                  country_code: 'US'
-              }
-          }
-      });
+            title: 'Chocolate bar',
+            quantity: 1,
+            is_fragile: true
+        },
+        pickup: {
+            contact: {
+            },
+            location: {
+                address: '64 Seabring St',
+                city: 'Brooklyn',
+                state: 'NY',
+                postal_code: '11231',
+                country_code: 'US'
+            }
+        },
+        dropoff: {
+            contact: {
+            },
+            location: {
+                address: '80 Willoughby St',
+                city: 'Brooklyn',
+                state: 'NY',
+                postal_code: '11201',
+                country_code: 'US'
+            }
+        }
+    });
 
-      delivery.quote()
-      .then(function(topQuote) {
-          console.log('Got quotes', topQuote);
+    delivery.quote()
+    .then(function(topQuote) {
+        console.log('Got quotes', topQuote);
 
-          delivery.on('status', function(status) {
-              console.log('delivery status updated: ' + status);
-          });
-          delivery.on('location', function(loc) {
-              console.log('delivery location updated: ', loc);
-          });
+        delivery.on('status', function(status) {
+            console.log('delivery status updated: ' + status);
+        });
+        delivery.on('location', function(loc) {
+            console.log('delivery location updated: ', loc);
+        });
 
-          delivery.confirm();
-      });
-  }); 
+        delivery.confirm();
+    });
 
 
 ### TODO
