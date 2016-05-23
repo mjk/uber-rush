@@ -34,7 +34,8 @@ class UberRUSHClient {
         'mode with scope:', scope
       );
     }
-    return API.getToken();
+
+    this._authenticationPromise = API.getToken();
   }
 
   createDelivery(options) {
