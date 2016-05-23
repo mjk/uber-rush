@@ -1,10 +1,11 @@
 {
   "name": "@mjk/uber-rush",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "UberRUSH v3.0 SDK",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "build": "babel lib -d out"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,9 @@
     "phone": "^1.0.5",
     "q": "^1.4.1",
     "restling": "^0.9.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0"
   }
 }
