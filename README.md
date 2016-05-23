@@ -21,8 +21,8 @@ When in sandbox mode, updated delivery statuses may either be simulated by you d
 #### Step 1: Intialize the SDK
 Before making API calls, you must initialize the SDK with your app's ID and secret.
 
-    var rush = require('uber-rush')
-    rush.init({
+    const UberRUSH = require('uber-rush')
+    const UberRUSHClient = new UberRUSH({
         client_secret: YOUR_CLIENT_SECRET,
         client_id: YOUR_CLIENT_ID,
         sandbox: true, // No couriers will actually be called if set
@@ -39,8 +39,7 @@ Every delivery starts with a quote. Initialize a new delivery with
 
 configured in a plain old JavaScript object:
 
-
-	var delivery = new rush.Delivery({
+	  let delivery = UberRUSHClient.createDelivery({
           item: {
               title: 'Chocolate bar',
               quantity: 1,
@@ -113,7 +112,7 @@ The core of the UberRUSH SDK, a Delivery is required to get a quote and dispatch
 
 Initialize the Delivery with pickup and dropoff information (a Contact person in each location, and a Location).
 
-	var Delivery = new rush.Delivery({
+	let Delivery = UberRUSHClient.createDelivery({
 		pickup: {
 			contact: Contact, /* see below */
 			location: Location /* see below */
@@ -235,7 +234,7 @@ Initialization parameters:
  
 Example: 
 
-	var loc = new Location({
+	var loc = new UberRUSH.Location({
 		address: '64 Seabring St',
 		city: 'Brooklyn',
 		state: 'NY',
@@ -260,16 +259,11 @@ Initialization parameters:
  
 Example: 
 
-	var itm = new Item({
+	var itm = new UberRUSH.Item({
 		title: 'chocolate bar',
 		quantity: 1,
 		is_fragile: true
 	});
-
-
-### rush.Contact
-### rush.Courier
-### rush.Quote
 
 
 ## Events
@@ -331,57 +325,58 @@ Sample location:
 
 ## Full example
 
-    var rush = require('uber-rush');
+    const UberRUSH = require('uber-rush');
 
-    rush.init({
+    const UberRUSHClient = new UberRUSH({
         client_secret: YOUR_CLIENT_SECRET,
         client_id: YOUR_CLIENT_ID,
         simulate: true
-    }).then(function() {
-        var delivery = new rush.Delivery({
-            item: {
-                title: 'Chocolate bar',
-                quantity: 1,
-                is_fragile: true
-            },
-            pickup: {
-                contact: {
-                },
-                location: {
-                    address: '64 Seabring St',
-                    city: 'Brooklyn',
-                    state: 'NY',
-                    postal_code: '11231',
-                    country_code: 'US'
-                }
-            },
-            dropoff: {
-                contact: {
-                },
-                location: {
-                    address: '80 Willoughby St',
-                    city: 'Brooklyn',
-                    state: 'NY',
-                    postal_code: '11201',
-                    country_code: 'US'
-                }
-            }
-        });
+    });
 
-        delivery.quote()
-        .then(function(topQuote) {
-            console.log('Got quotes', topQuote);
+    let delivery = UberRUSHClient.createDelivery({
+        item: {
+              title: 'Chocolate bar',
+              quantity: 1,
+              is_fragile: true
+          },
+          pickup: {
+              contact: {
+              },
+              location: {
+                  address: '64 Seabring St',
+                  city: 'Brooklyn',
+                  state: 'NY',
+                  postal_code: '11231',
+                  country_code: 'US'
+              }
+          },
+          dropoff: {
+              contact: {
+              },
+              location: {
+                  address: '80 Willoughby St',
+                  city: 'Brooklyn',
+                  state: 'NY',
+                  postal_code: '11201',
+                  country_code: 'US'
+              }
+          }
+      });
 
-            delivery.on('status', function(status) {
-                console.log('delivery status updated: ' + status);
-            });
-            delivery.on('location', function(loc) {
-                console.log('delivery location updated: ', loc);
-            });
+      delivery.quote()
+      .then(function(topQuote) {
+          console.log('Got quotes', topQuote);
 
-            delivery.confirm();
-        });
-    }); 
+          delivery.on('status', function(status) {
+              console.log('delivery status updated: ' + status);
+          });
+          delivery.on('location', function(loc) {
+              console.log('delivery location updated: ', loc);
+          });
+
+          delivery.confirm();
+      });
+  }); 
 
 
 ### TODO

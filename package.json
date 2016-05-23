@@ -1,6 +1,6 @@
 {
   "name": "@mjk/uber-rush",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "UberRUSH v3.0 SDK",
   "main": "index.js",
   "scripts": {
@@ -14,12 +14,13 @@
     "uber"
   ],
   "author": "Matthew Keesan <keesan@gmail.com>",
-  "license": "UNLICENSED",
+  "license": "ASL",
   "bugs": {
     "url": "https://github.com/mjk/uber-rush/issues"
   },
   "homepage": "https://github.com/mjk/uber-rush#readme",
   "dependencies": {
+    "geodesy": "^1.0.2",
     "lodash": "^3.10.1",
     "nconf": "^0.8.2",
     "phone": "^1.0.5",
