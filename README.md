@@ -9,10 +9,10 @@ You'll need a client ID and a client secret from Uber. Additionally, you'll want
  1. Register at [https://developer.uber.com](http://developer.uber.com)
  2. Create a new app
  3. Enable the delivery sandbox
- 4. some more steps
+ 4. Copy your client ID and secret 
  5. `npm install @mjk/uber-rush`
 
-When in sandbox mode, updated delivery statuses may either be simulated by you directly, by calling `delivery.updateStatus(<new-delivery-status>);`, or automatically by using the `simulate` truthy configuration parameter. If `simulate` is a number, it will be used as the interval in milliseconds between order status updates.
+When in sandbox mode, updated delivery statuses may either be simulated by you directly, by calling `delivery.updateStatus(<new-delivery-status>);`, or automatically by the SDK using the `simulate` truthy configuration parameter. If `simulate` is a number, it will be used as the interval in milliseconds between order status updates.
 
 (If simulating yourself, you must call each delivery status in proper order.)
 
@@ -22,7 +22,7 @@ When in sandbox mode, updated delivery statuses may either be simulated by you d
 Before making API calls, you must initialize the SDK with your app's ID and secret.
 
     const UberRUSH = require('uber-rush')
-    const UberRUSHClient = new UberRUSH({
+    const UberRUSHClient = UberRUSH.createClient({
         client_secret: YOUR_CLIENT_SECRET,
         client_id: YOUR_CLIENT_ID,
         sandbox: true // No couriers will actually be called if set
@@ -38,7 +38,7 @@ Every delivery starts with a quote. Initialize a new delivery with
 
 configured in a plain old JavaScript object:
 
-	  let delivery = UberRUSHClient.createDelivery({
+	  var delivery = UberRUSHClient.createDelivery({
           item: {
               title: 'Chocolate bar',
               quantity: 1,
@@ -103,12 +103,12 @@ Uber requests that we only check status every 30 seconds. If you're trying to ke
 
 ## API reference
 
-### rush.Delivery
+### Delivery
 The core of the UberRUSH SDK, a Delivery is required to get a quote and dispatch a courier.
 
 Initialize the Delivery with pickup and dropoff information (a Contact person in each location, and a Location).
 
-	let Delivery = UberRUSHClient.createDelivery({
+	var Delivery = UberRUSHClient.createDelivery({
 		pickup: {
 			contact: Contact, /* see below */
 			location: Location /* see below */
@@ -230,6 +230,7 @@ Initialization parameters:
  
 Example: 
 
+  var UberRUSH = require('uber-rush');
 	var loc = new UberRUSH.Location({
 		address: '64 Seabring St',
 		city: 'Brooklyn',
@@ -255,7 +256,8 @@ Initialization parameters:
  
 Example: 
 
-	var itm = new UberRUSH.Item({
+  var UberRUSH = require('uber-rush');
+	var item = new UberRUSH.Item({
 		title: 'chocolate bar',
 		quantity: 1,
 		is_fragile: true
@@ -323,13 +325,13 @@ Sample location:
 
     const UberRUSH = require('uber-rush');
 
-    const UberRUSHClient = new UberRUSH({
+    const UberRUSHClient = UberRUSH.createClient({
         client_secret: YOUR_CLIENT_SECRET,
         client_id: YOUR_CLIENT_ID,
         simulate: true
     });
 
-    let delivery = UberRUSHClient.createDelivery({
+    var delivery = UberRUSHClient.createDelivery({
         item: {
             title: 'Chocolate bar',
             quantity: 1,
@@ -337,6 +339,8 @@ Sample location:
         },
         pickup: {
             contact: {
+                first_name: 'Ryan',
+                last_name: 'Cheney'
             },
             location: {
                 address: '64 Seabring St',
@@ -348,6 +352,8 @@ Sample location:
         },
         dropoff: {
             contact: {
+                first_name: 'Karen',
+                last_name: 'Holmes'
             },
             location: {
                 address: '80 Willoughby St',
