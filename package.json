@@ -1,11 +1,10 @@
 {
-  "name": "@mjk/uber-rush",
-  "version": "0.1.1",
+  "name": "uber-rush",
+  "version": "0.1.3",
   "description": "UberRUSH v3.0 SDK",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
-    "build": "babel lib -d out"
+    "build": "rm -rf out && mkdir out && babel index.js -d out && babel lib -d out/lib"
   },
   "repository": {
     "type": "git",
