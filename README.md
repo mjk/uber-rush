@@ -10,7 +10,7 @@ You'll need a client ID and a client secret from Uber. Additionally, you'll want
  2. Create a new app
  3. Enable the delivery sandbox
  4. Copy your client ID and secret 
- 5. `npm install @mjk/uber-rush`
+ 5. `npm install uber-rush`
 
 When in sandbox mode, updated delivery statuses may either be simulated by you directly, by calling `delivery.updateStatus(<new-delivery-status>);`, or automatically by the SDK using the `simulate` truthy configuration parameter. If `simulate` is a number, it will be used as the interval in milliseconds between order status updates.
 
