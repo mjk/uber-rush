@@ -18,7 +18,7 @@ When in sandbox mode, updated delivery statuses may either be simulated by you d
 
 ## Getting started 
 
-#### Step 1: Intialize the SDK
+#### Step 1: Initialize the SDK
 Before making API calls, you must initialize the SDK with your app's ID and secret.
 
     const UberRUSH = require('uber-rush')
@@ -99,6 +99,58 @@ Uber requests that we only check status every 30 seconds. If you're trying to ke
 	});
 	delivery.confirm();
 
+## Event details
+### Delivery status
+Delivery status is a string.
+
+	delivery.on('status', function (status) {
+		console.log('Delivery status: ' + status);
+	});
+	// Prints (e.g.): Delivery status: processing
+
+Possible statuses:
+
+ * **processing**: The delivery request is being processed.
+ * **no_couriers_available**: The delivery request timed out with no couriers available.
+ * **en_route_to_pickup**: A courier has been assigned and is en route to the pickup location.
+ * **at_pickup**: The courier is at the pickup location.
+ * **en_route_to_dropoff**: The courier has picked up the item and is en route to the dropoff location.
+ * **at_dropoff**: The courier is at the dropoff location.
+ * **completed**: The delivery has been successfully completed.
+ * **client_canceled**: This delivery was canceled by merchant request. 
+ * **returning**: The courier is returning the delivery to the pickup location.
+ * **returned**: The delivery has been successfully returned to the pickup location.
+ * **unable_to_deliver**: Catch­all reason if courier is unable to deliver.
+
+### Delivery ETAs
+
+Estimated Time of Arrival (ETA) is expressed as an integer number of minutes from now. UberRUSH provides two ETAs: `dropoff_eta` (how long until the dropoff is projected to occur), and `pickup_eta` (how long until the courier will be picking up the item). These estimates are updated automatically throughout the delivery process; whenever that happens, these events are fired.
+
+Example:
+
+	delivery.on('dropoff_eta', function(eta) {
+		console.log('The dropoff time is now estimated to be in ' + eta + ' minutes');
+	});
+
+	delivery.on('pickup_eta', function(eta) {
+		console.log('Your item will be picked up in approximately ' + eta + ' minutes');
+	});	
+	
+
+### Delivery location
+Once a courier is dispatched, you can track their current location via the location event. It emits a plain old object with latitude and longitude.
+
+	delivery.on('location', function (location) {
+		console.log('Delivery location: ' + location);
+	});
+
+Sample location:
+
+		{
+			latitude: 55.0, 
+			longitude: -2.0, 
+			bearing: 39, // courier's last bearing in radians
+		}
 
 
 ## API reference
@@ -126,7 +178,7 @@ Initialize the Delivery with pickup and dropoff information (a Contact person in
 
 Requests a quote from the UberRUSH API. Returns a [promise](https://promisesaplus.com) for an array of `Quote` objects. 
 
-Even if you're calling a courier with no regard for the price, actual delivery cannot begin until you have a quote. Thus, this is always the first step to calling a courier.
+Even if you're completely price-insensitive, UberRUSH requires a quote before initiating delivery. Thus, this is always the first step to calling a courier.
 
 Example:
 
@@ -171,11 +223,11 @@ Adds an Item to an order.
 
 Example:
 
-	delivery.addItem(new Item({
+	delivery.addItem({
 		title: 'Chocolate bar',
 		quantity: 1,
 		is_fragile: true
-	}));
+	});
 
 ##### `delivery.setDropoff({contact: Contact /* optional */, location: Location /* optional */})`
 
@@ -216,7 +268,7 @@ Example:
 	delivery.requireSignature(false); // signature is not required
 	delivery.requireSignature(true); // signature is required
 	
-### rush.Location
+### Location
 Represents the location a courier will be traveling to, as a regular street address. The API will determine its latitude and longitude for you.
 
 Initialization parameters:
@@ -239,7 +291,7 @@ Example:
 		country: 'US'
 	});
 	
-### rush.Item
+### Item
 
 What the courier will couriering.
 
@@ -263,62 +315,6 @@ Example:
 		is_fragile: true
 	});
 
-
-## Events
-
-Want to follow a delivery without polling? Use events!
-
-### Delivery statuses
-Delivery status is a string.
-
-	delivery.on('status', function (status) {
-		console.log('Delivery status: ' + status);
-	});
-	// Prints (e.g.): Delivery status: processing
-
-Possible statuses:
-
- * **processing**: The delivery request is being processed.
- * **no_couriers_available**: The delivery request timed out with no couriers available.
- * **en_route_to_pickup**: A courier has been assigned and is en route to the pickup location.
- * **at_pickup**: The courier is at the pickup location.
- * **en_route_to_dropoff**: The courier has picked up the item and is en route to the dropoff location.
- * **at_dropoff**: The courier is at the dropoff location.
- * **completed**: The delivery has been successfully completed.
- * **client_canceled**: This delivery was canceled by merchant request. 
- * **returning**: The courier is returning the delivery to the pickup location.
- * **returned**: The delivery has been successfully returned to the pickup location.
- * **unable_to_deliver**: Catch­all reason if courier is unable to deliver.
-
-### Delivery ETAs
-
-Estimated Time of Arrival (ETA) is expressed as the number of minutes, from now, that something will happen. UberRUSH provides two ETAs: `dropoff_eta` (how long til the dropoff is likely to occur), and `pickup_eta` (how long til the courier will be picking up the item). These estimates will be updated automatially throughout the delivery process. Whenever that happens, these events will be fired.
-
-Example:
-
-	delivery.on('dropoff_eta', function(eta) {
-		console.log('The dropoff time is now estimated to be in ' + eta + ' minutes');
-	});
-
-	delivery.on('pickup_eta', function(eta) {
-		console.log('Your item will be picked up in approximately ' + eta + ' minutes');
-	});	
-	
-
-### Delivery location
-Once a courier is dispatched, you can track their current location via the location event. It emits a plain old object with latitude and longitude.
-
-	delivery.on('location', function (location) {
-		console.log('Delivery location: ' + location);
-	});
-
-Sample location:
-
-		{
-			latitude: 55.0, 
-			longitude: -2.0, 
-			bearing: 39, // courier's last bearing in radians
-		}
 
 
 ## Full example
@@ -379,6 +375,9 @@ Sample location:
         delivery.confirm();
     });
 
+### Contributing
+
+Contributors welcome. Say hi!
 
 ### TODO
 
