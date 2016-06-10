@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mjk/uber-rush.svg?branch=master)](https://travis-ci.org/mjk/uber-rush)
+
 # uber rush sdk
 
 Node.js SDK for the UberRUSH API. Make deliveries without ever leaving your CLI.
