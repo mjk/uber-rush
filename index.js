@@ -35,7 +35,8 @@ class UberRUSHClient {
       );
     }
 
-    this._authenticationPromise = API.getToken();
+    if (!options.no_preload)
+      this._authenticationPromise = API.getToken();
   }
 
   createDelivery(options) {
