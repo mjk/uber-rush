@@ -4,6 +4,7 @@
   "description": "UberRUSH v3.0 SDK",
   "main": "index.js",
   "scripts": {
+    "test": "mocha test/unit",
     "build": "rm -rf out && mkdir out && babel index.js -d out && babel lib -d out/lib"
   },
   "repository": {
