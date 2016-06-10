@@ -66,4 +66,13 @@ describe('testing delivery creation', function() {
       delivery.requireSignature('special');
     });
   });
+
+  it('Delivery should provide quote method', function() {
+    let delivery = new rush.Delivery(deliveryConfig);
+
+    assert(typeof delivery.quote == 'function');
+    assert.doesNotThrow(() => {
+      //delivery.quote();
+    });
+  });
 })
