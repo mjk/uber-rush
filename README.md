@@ -14,6 +14,8 @@ You'll need a client ID and a client secret from Uber. Additionally, you'll want
  4. Copy your client ID and secret 
  5. `npm install uber-rush`
 
+Included in the package is an example script which will simulate delivery--you just need to enter your keys to try it out.
+
 ### A note on the sandbox
 
 When in sandbox mode, no courier is dispatched. To test integrations, changing delivery statuses may either be simulated by you directly, by calling `delivery.updateStatus(<new-delivery-status>);`, or automatically by the SDK using the `simulate` truthy configuration parameter. If `simulate` is a number, it will be used as the interval in milliseconds between order status updates.
