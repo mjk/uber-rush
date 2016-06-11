@@ -14,7 +14,9 @@ You'll need a client ID and a client secret from Uber. Additionally, you'll want
  4. Copy your client ID and secret 
  5. `npm install uber-rush`
 
-When in sandbox mode, updated delivery statuses may either be simulated by you directly, by calling `delivery.updateStatus(<new-delivery-status>);`, or automatically by the SDK using the `simulate` truthy configuration parameter. If `simulate` is a number, it will be used as the interval in milliseconds between order status updates.
+### A note on the sandbox
+
+When in sandbox mode, no courier is dispatched. To test integrations, changing delivery statuses may either be simulated by you directly, by calling `delivery.updateStatus(<new-delivery-status>);`, or automatically by the SDK using the `simulate` truthy configuration parameter. If `simulate` is a number, it will be used as the interval in milliseconds between order status updates.
 
 (If simulating yourself, you must call each delivery status in proper order.)
 
@@ -284,7 +286,7 @@ Initialization parameters:
  
 Example: 
 
-  var UberRUSH = require('uber-rush');
+    var UberRUSH = require('uber-rush');
 	var loc = new UberRUSH.Location({
 		address: '64 Seabring St',
 		city: 'Brooklyn',
@@ -310,12 +312,12 @@ Initialization parameters:
  
 Example: 
 
-  var UberRUSH = require('uber-rush');
-	var item = new UberRUSH.Item({
-		title: 'chocolate bar',
-		quantity: 1,
-		is_fragile: true
-	});
+    var UberRUSH = require('uber-rush');
+    var item = new UberRUSH.Item({
+      title: 'chocolate bar',
+      quantity: 1,
+      is_fragile: true
+    });
 
 
 
