@@ -27,6 +27,7 @@ class UberRUSHClient {
     nconf.set('uber_api_simulate', options.simulate);
     nconf.set('uber_api_debug', options.debug);
     nconf.set('uber_api_scope', scope);
+    nconf.set('uber_api_polling_interval_secs', options.polling_interval_secs || 30);
 
     if (options.debug) {
       console.log(
