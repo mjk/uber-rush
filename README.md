@@ -127,6 +127,7 @@ Possible statuses:
  * **returning**: The courier is returning the delivery to the pickup location.
  * **returned**: The delivery has been successfully returned to the pickup location.
  * **unable_to_deliver**: Catch­all reason if courier is unable to deliver.
+ * **admin_ended**: An administrator manually terminated this delivery from the UberRUSH console.
 
 ### Delivery ETAs
 
