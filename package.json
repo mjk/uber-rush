@@ -1,6 +1,6 @@
 {
   "name": "uber-rush",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "UberRUSH v3.0 SDK",
   "main": "index.js",
   "scripts": {
