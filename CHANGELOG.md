@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.1.9](https://github.com/mjk/uber-rush/tree/0.1.9) (2016-08-29)
+**Merged pull requests:**
+
+-  Prevent NaN values for ETAs when receiving a polling update [\#8](https://github.com/mjk/uber-rush/pull/8) ([beum](https://github.com/beum))
+
+
 ## [0.1.8](https://github.com/mjk/uber-rush/tree/0.1.8) (2016-08-17)
 **Closed issues:**
 
