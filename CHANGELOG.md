@@ -1,10 +1,19 @@
 # Change Log
 
-## [0.1.9](https://github.com/mjk/uber-rush/tree/0.1.9) (2016-08-29)
+## [v0.1.10](https://github.com/mjk/uber-rush/tree/v0.1.10) (2016-10-04)
+[Full Changelog](https://github.com/mjk/uber-rush/compare/0.1.9...v0.1.10)
+
 **Merged pull requests:**
 
--  Prevent NaN values for ETAs when receiving a polling update [\#8](https://github.com/mjk/uber-rush/pull/8) ([beum](https://github.com/beum))
+- Switched to google-libphonenumber. [\#10](https://github.com/mjk/uber-rush/pull/10) ([mjk](https://github.com/mjk))
+- Handling null response from Uber API [\#9](https://github.com/mjk/uber-rush/pull/9) ([mjk](https://github.com/mjk))
 
+## [0.1.9](https://github.com/mjk/uber-rush/tree/0.1.9) (2016-08-29)
+[Full Changelog](https://github.com/mjk/uber-rush/compare/0.1.8...0.1.9)
+
+**Merged pull requests:**
+
+- Prevent NaN values for ETAs when receiving a polling update [\#8](https://github.com/mjk/uber-rush/pull/8) ([beum](https://github.com/beum))
 
 ## [0.1.8](https://github.com/mjk/uber-rush/tree/0.1.8) (2016-08-17)
 **Closed issues:**
