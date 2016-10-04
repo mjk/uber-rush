@@ -22,9 +22,9 @@
   "homepage": "https://github.com/mjk/uber-rush#readme",
   "dependencies": {
     "geodesy": "^1.0.2",
+    "google-libphonenumber": "^2.0.2",
     "lodash": "^3.10.1",
     "nconf": "^0.8.2",
-    "phone": "^1.0.5",
     "q": "^1.4.1",
     "restling": "^0.9.1"
   },
