@@ -44,6 +44,10 @@ class UberRUSHClient {
     options.debug = options.debug || this.debug;
     return new Delivery(options);
   }
+
+  setPollingInterval(interval) {
+    nconf.set('uber_api_polling_interval_secs', interval);
+  }
 }
 
 UberRUSHClient.Delivery = Delivery;
