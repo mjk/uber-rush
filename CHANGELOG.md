@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.1.11](https://github.com/mjk/uber-rush/tree/v0.1.11) (2016-10-20)
+[Full Changelog](https://github.com/mjk/uber-rush/compare/v0.1.10...v0.1.11)
+
+**Merged pull requests:**
+
+- add setPollingInterval to client [\#12](https://github.com/mjk/uber-rush/pull/12) ([pstoica](https://github.com/pstoica))
+- Added preliminary support for rating and getting ratings. [\#11](https://github.com/mjk/uber-rush/pull/11) ([mjk](https://github.com/mjk))
+
 ## [v0.1.10](https://github.com/mjk/uber-rush/tree/v0.1.10) (2016-10-04)
 [Full Changelog](https://github.com/mjk/uber-rush/compare/0.1.9...v0.1.10)
 
