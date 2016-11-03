@@ -9,10 +9,17 @@ const Quote = require('./lib/Quote');
 const Item = require('./lib/Item');
 const Contact = require('./lib/Contact');
 
+const DEFAULT_OPTIONS = {
+  polling_interval_secs: 30,
+  simulation_interval_secs: 30
+};
+
 class UberRUSHClient {
   constructor(options) {
     if (!options.client_secret) throw new Error("client_secret must be provided");
     if (!options.client_id) throw new Error("client_id must be provided");
+
+    options = Object.assign(DEFAULT_OPTIONS, options);
     Object.assign(this, options);
 
     const sandbox = options.sandbox || !options.production;
@@ -27,7 +34,8 @@ class UberRUSHClient {
     nconf.set('uber_api_simulate', options.simulate);
     nconf.set('uber_api_debug', options.debug);
     nconf.set('uber_api_scope', scope);
-    nconf.set('uber_api_polling_interval_secs', options.polling_interval_secs || 30);
+    nconf.set('uber_api_polling_interval_secs', options.polling_interval_secs);
+    nconf.set('uber_api_simulation_interval_secs', options.simulation_interval_secs);
 
     if (options.debug) {
       console.log(
@@ -45,8 +53,9 @@ class UberRUSHClient {
     return new Delivery(options);
   }
 
-  setPollingInterval(interval) {
-    nconf.set('uber_api_polling_interval_secs', interval);
+  setSimulationInterval(interval) {
+    nconf.set('uber_api_simulation_interval_secs', interval);
+    this.simulation_interval_secs = interval;
   }
 }
 
