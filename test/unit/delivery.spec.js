@@ -5,6 +5,8 @@ const rush = require('../../index');
 const config = require('../dummy/config');
 const deliveryConfig = require('../dummy/delivery').fullDelivery;
 
+const client = rush.createClient(config);
+
 describe('testing delivery creation', function() {
   const client = rush.createClient(config);
 
@@ -67,6 +69,19 @@ describe('testing delivery creation', function() {
     });
   });
 
+  it('Delivery should automatically add single items', function() {
+    let delivery = client.createDelivery({
+      item: {
+        title: 'a fun item',
+        quantity: 1
+      }
+    });
+
+    assert(delivery.items instanceof Array);
+    assert(delivery.items.length == 1);
+    assert(delivery.items[0].title == 'a fun item');
+  });
+
   it('Delivery should provide quote method', function() {
     let delivery = new rush.Delivery(deliveryConfig);
 
@@ -75,4 +90,31 @@ describe('testing delivery creation', function() {
       //delivery.quote();
     });
   });
-})
+
+  it('Delivery should provide getRatings method', function() {
+    let delivery = new rush.Delivery(deliveryConfig);
+
+    assert(typeof delivery.getRatings == 'function');
+    assert.throws(() => {
+      delivery.getRatings();
+    });
+    assert.doesNotThrow(() => {
+      try {
+      delivery.getRatings({delivery_id: 'foo'}).then(console.log);
+      } catch (e) {
+        console.error(e);
+      }
+    });
+  });
+
+  it('Delivery should provide rate method', function() {
+    let delivery = new rush.Delivery(deliveryConfig);
+
+    assert(typeof delivery.rate == 'function');
+    assert.throws(() => {
+      delivery.rate();
+      delivery.rate({});
+      delivery.rate({waypoint: 'foobar'});
+    });
+  });
+});
