@@ -20,8 +20,10 @@ module.exports = {
     },
     dropoff: {
       contact: {
+        first_name: 'Karen',
+        last_name: 'Holmes',
         phone: {
-          number: '215-817-6649'
+          number: '555-555-5555'
         }
       },
       location: {
