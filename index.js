@@ -35,7 +35,6 @@ class UberRUSHClient {
     nconf.set('uber_api_debug', options.debug);
     nconf.set('uber_api_scope', scope);
     nconf.set('uber_api_polling_interval_secs', options.polling_interval_secs);
-    nconf.set('uber_api_simulation_interval_secs', options.simulation_interval_secs);
 
     if (options.debug) {
       console.log(
@@ -54,8 +53,7 @@ class UberRUSHClient {
   }
 
   setSimulationInterval(interval) {
-    nconf.set('uber_api_simulation_interval_secs', interval);
-    this.simulation_interval_secs = interval;
+    nconf.set('uber_api_simulate', interval);
   }
 }
 
