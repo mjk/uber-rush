@@ -5,7 +5,7 @@ module.exports = {
         first_name: 'Ryan',
         last_name: 'Cheney',
         phone: {
-          number: '215-817-6649'
+          number: '555-555-5555'
         }
       },
       location: {
