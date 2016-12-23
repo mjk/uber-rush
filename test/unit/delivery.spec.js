@@ -115,6 +115,23 @@ describe('testing delivery creation', function() {
       delivery.rate();
       delivery.rate({});
       delivery.rate({waypoint: 'foobar'});
+      delivery.rate({waypoint: 'pickup', rating_type: 'five_points', rating_value: 0});
+      delivery.rate({waypoint: 'pickup', rating_type: 'five_points', rating_value: true});
+      delivery.rate({waypoint: 'pickup', rating_type: 'five_points', rating_value: 'abc'});
+    });
+    assert.doesNotThrow(() => {
+      try {
+      delivery.status = 'completed';
+      delivery.rate({waypoint: 'pickup', rating_type: 'binary', rating_value: 0});
+      delivery.rate({waypoint: 'pickup', rating_type: 'binary', rating_value: 1});
+      delivery.rate({waypoint: 'pickup', rating_type: 'five_points', rating_value: 1});
+      delivery.rate({waypoint: 'pickup', rating_type: 'five_points', rating_value: 2});
+      delivery.rate({waypoint: 'pickup', rating_type: 'five_points', rating_value: 3});
+      delivery.rate({waypoint: 'pickup', rating_type: 'five_points', rating_value: 4});
+      delivery.rate({waypoint: 'pickup', rating_type: 'five_points', rating_value: 5});
+      } catch (e) {
+        console.error(e);
+      }
     });
   });
 });
