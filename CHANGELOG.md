@@ -1,17 +1,18 @@
 # Change Log
 
+## [v0.4.1](https://github.com/mjk/uber-rush/tree/v0.4.1) (2017-02-19)
+[Full Changelog](https://github.com/mjk/uber-rush/compare/v0.3.1...v0.4.1)
+
+**Merged pull requests:**
+
+- Avoiding circular structure problems in error logging. [\#18](https://github.com/mjk/uber-rush/pull/18) ([mjk](https://github.com/mjk))
+
 ## [v0.4.0](https://github.com/mjk/uber-rush/tree/v0.4.0) (2016-12-23)
-[Full Changelog](https://github.com/mjk/uber-rush/compare/0.4.0...v0.4.0)
+[Full Changelog](https://github.com/mjk/uber-rush/compare/v0.1.11...v0.4.0)
 
 **Merged pull requests:**
 
 - Updated rating endpoints [\#17](https://github.com/mjk/uber-rush/pull/17) ([mjk](https://github.com/mjk))
-
-## [0.3.1](https://github.com/mjk/uber-rush/tree/0.3.1) (2016-12-13)
-[Full Changelog](https://github.com/mjk/uber-rush/compare/v0.1.11...0.3.1)
-
-**Merged pull requests:**
-
 - Remove unnecessary nconf flags and fix setSimulationInterval\(\) [\#16](https://github.com/mjk/uber-rush/pull/16) ([beum](https://github.com/beum))
 - Single-item inclusion [\#14](https://github.com/mjk/uber-rush/pull/14) ([mjk](https://github.com/mjk))
 - setPollingInterval -\> setSimulationInterval. better defaults. [\#13](https://github.com/mjk/uber-rush/pull/13) ([pstoica](https://github.com/pstoica))
