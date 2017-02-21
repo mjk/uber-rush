@@ -53,7 +53,7 @@ configured in a plain old JavaScript object:
           pickup: {
               contact: {
                   first_name: 'Ryan',
-                  last_name: 'Cheney
+                  last_name: 'Cheney'
               },
               location: {
                   address: '64 Seabring St',
@@ -66,7 +66,7 @@ configured in a plain old JavaScript object:
           dropoff: {
               contact: {
                   first_name: 'Karen',
-                  last_name: 'Holmes
+                  last_name: 'Holmes'
               },
               location: {
                   address: '80 Willoughby St',
