@@ -60,7 +60,7 @@ configured in a plain old JavaScript object:
                   city: 'Brooklyn',
                   state: 'NY',
                   postal_code: '11231',
-                  country_code: 'US'
+                  country: 'US'
               }
           },
           dropoff: {
@@ -73,7 +73,7 @@ configured in a plain old JavaScript object:
                   city: 'Brooklyn',
                   state: 'NY',
                   postal_code: '11201',
-                  country_code: 'US'
+                  country: 'US'
               }
           }
 	});
@@ -350,7 +350,7 @@ Example:
                 city: 'Brooklyn',
                 state: 'NY',
                 postal_code: '11231',
-                country_code: 'US'
+                country: 'US'
             }
         },
         dropoff: {
@@ -363,7 +363,7 @@ Example:
                 city: 'Brooklyn',
                 state: 'NY',
                 postal_code: '11201',
-                country_code: 'US'
+                country: 'US'
             }
         }
     });
