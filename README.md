@@ -55,7 +55,7 @@ configured in a plain old JavaScript object:
                   first_name: 'Ryan',
                   last_name: 'Cheney',
                 phone: {
-                  number: "+14152229670"
+                  number: "+15555555555"
                 }
               },
               location: {
@@ -71,7 +71,7 @@ configured in a plain old JavaScript object:
                   first_name: 'Karen',
                   last_name: 'Holmes',
                 phone: {
-                  number: "+14152229670"
+                  number: "+15555555555"
                 }
               },
               location: {
