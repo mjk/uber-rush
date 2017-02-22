@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.4.2](https://github.com/mjk/uber-rush/tree/v0.4.2) (2017-02-22)
+[Full Changelog](https://github.com/mjk/uber-rush/compare/v0.4.1...v0.4.2)
+
+**Merged pull requests:**
+
+- Fixed README missing quotes [\#19](https://github.com/mjk/uber-rush/pull/19) ([BrennerSpear](https://github.com/BrennerSpear))
+- Update Quote.js [\#15](https://github.com/mjk/uber-rush/pull/15) ([leo-souza](https://github.com/leo-souza))
+
 ## [v0.4.1](https://github.com/mjk/uber-rush/tree/v0.4.1) (2017-02-19)
 [Full Changelog](https://github.com/mjk/uber-rush/compare/v0.3.1...v0.4.1)
 
