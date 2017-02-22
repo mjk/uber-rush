@@ -55,7 +55,7 @@ configured in a plain old JavaScript object:
                   first_name: 'Ryan',
                   last_name: 'Cheney',
                 phone: {
-                  number: "+15555555555"
+                  number: "555-555-5555"
                 }
               },
               location: {
@@ -71,7 +71,7 @@ configured in a plain old JavaScript object:
                   first_name: 'Karen',
                   last_name: 'Holmes',
                 phone: {
-                  number: "+15555555555"
+                  number: "555-555-5555"
                 }
               },
               location: {
@@ -99,7 +99,7 @@ Sending the quote out for an estimate returns a [promise](https://promisesaplus.
 
 The first quote in the array will be the best quote for the job. Confirming the delivery will start a courier on her journey (unless you're in the sandbox) so be sure you're ready! Before you confirm delivery, it's a good idea to subscribe to a few **events** in order to track the courier's progress.
 
-To confirm a delivery, the pickup contact and dropoff contact must have a phone number as well as a first & last name, or company name. Phone numbers should include the country and area code.
+To confirm a delivery, the pickup contact and dropoff contact must have a phone number as well as a first & last name, or company name.
 
 Uber requests that we only check status every 30 seconds. If you're trying to keep up with your courier on a map, that's a slow update cycle--by default we only fire status update events on the same schedule. 
 
