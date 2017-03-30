@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.4.3](https://github.com/mjk/uber-rush/tree/v0.4.3) (2017-03-30)
+[Full Changelog](https://github.com/mjk/uber-rush/compare/v0.4.2...v0.4.3)
+
+**Merged pull requests:**
+
+- Updated error message to pass through actual error from Uber. [\#20](https://github.com/mjk/uber-rush/pull/20) ([mjk](https://github.com/mjk))
+
 ## [v0.4.2](https://github.com/mjk/uber-rush/tree/v0.4.2) (2017-02-22)
 [Full Changelog](https://github.com/mjk/uber-rush/compare/v0.4.1...v0.4.2)
 
@@ -15,8 +22,8 @@
 
 - Avoiding circular structure problems in error logging. [\#18](https://github.com/mjk/uber-rush/pull/18) ([mjk](https://github.com/mjk))
 
-## [v0.4.0](https://github.com/mjk/uber-rush/tree/v0.4.0) (2016-12-23)
-[Full Changelog](https://github.com/mjk/uber-rush/compare/v0.1.11...v0.4.0)
+## [v0.3.1](https://github.com/mjk/uber-rush/tree/v0.3.1) (2016-12-23)
+[Full Changelog](https://github.com/mjk/uber-rush/compare/v0.1.11...v0.3.1)
 
 **Merged pull requests:**
 
