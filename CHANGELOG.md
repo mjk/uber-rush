@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.4.4](https://github.com/mjk/uber-rush/tree/v0.4.4) (2017-04-11)
+[Full Changelog](https://github.com/mjk/uber-rush/compare/v0.4.3...v0.4.4)
+
+**Merged pull requests:**
+
+- Clearing simulation if the order hits a terminal state [\#21](https://github.com/mjk/uber-rush/pull/21) ([mjk](https://github.com/mjk))
+
 ## [v0.4.3](https://github.com/mjk/uber-rush/tree/v0.4.3) (2017-03-30)
 [Full Changelog](https://github.com/mjk/uber-rush/compare/v0.4.2...v0.4.3)
 
